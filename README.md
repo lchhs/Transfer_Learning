@@ -11,7 +11,7 @@ Follow the CRSIP-DM method
 !pip install torch torchvision
 !pip install Pillow 
 
-<img src="./img/step1-1.jpg" height=500/>
+<img src="./img/step1-1.jpg" height=400/>
 
 # import library
 import torch
@@ -25,7 +25,7 @@ from torchvision import datasets, transforms, models
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
-<img src="./img/step1-2.jpg" height=500/>
+<img src="./img/step1-2.jpg" height=40/>
 
 # get data  (homework 4 要找一個github, 裡面有dataset的folder)
 #!git clone https://github.com/jaddoescad/ants_and_bees.git
@@ -34,7 +34,7 @@ print(device)
 # !rm -rf ./ants_and_bees/
 !git clone https://github.com/ariefrahmansyah/face-mask-detection.git
 
-
+<img src="./img/step1-3.jpg" height=400/>
 
 
 
