@@ -37,11 +37,11 @@ print(device)
 
 # get data  (homework 4 要找一個github, 裡面有dataset的folder)
 
-#!git clone https://github.com/jaddoescad/ants_and_bees.git
+# !git clone https://github.com/jaddoescad/ants_and_bees.git
 
-#!git clone https://github.com/chandrikadeb7/Face-Mask-Detection.git
+# !git clone https://github.com/chandrikadeb7/Face-Mask-Detection.git
 
-#!rm -rf ./Face-Mask-Detection/
+# !rm -rf ./Face-Mask-Detection/
 
 # !rm -rf ./ants_and_bees/
 !git clone https://github.com/ariefrahmansyah/face-mask-detection.git
@@ -171,9 +171,9 @@ criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(model.parameters(), lr = 0.0001)
 
-#跑3次
+# 跑5次
 
-epochs = 3
+epochs = 5
 
 running_loss_history = []
 
@@ -302,7 +302,7 @@ img = transform(img)
 
 plt.imshow(im_convert(img))
 
-#Transform
+# Transform
 <img src="./img/step5-3.jpg" height=300/>
 
 image = img.to(device).unsqueeze(0)
@@ -313,7 +313,7 @@ _, pred = torch.max(output, 1)
 
 print(classes[pred.item()])
 
-#Result
+# Result
 <img src="./img/step5-4.jpg" height=200/>
 
 ### Mask Example
@@ -321,8 +321,8 @@ print(classes[pred.item()])
 <img src="./img/step5-5.jpg" height=400/>
 
 
-#Transform
+# Transform
 <img src="./img/step5-6.jpg" height=400/>
 
-#Result
+# Result
 <img src="./img/step5-7.jpg" height=300/>
