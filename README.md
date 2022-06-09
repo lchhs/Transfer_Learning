@@ -236,14 +236,93 @@ for e in range(epochs):
         val_running_corrects += torch.sum(val_preds == val_labels.data)
       
     epoch_loss = running_loss/len(training_loader.dataset)
+
     epoch_acc = running_corrects.float()/ len(training_loader.dataset)
+
     running_loss_history.append(epoch_loss)
+
     running_corrects_history.append(epoch_acc)
     
     val_epoch_loss = val_running_loss/len(validation_loader.dataset)
+
     val_epoch_acc = val_running_corrects.float()/ len(validation_loader.dataset)
+
     val_running_loss_history.append(val_epoch_loss)
+
     val_running_corrects_history.append(val_epoch_acc)
+
     print('epoch :', (e+1))
+
     print('training loss: {:.4f}, acc {:.4f} '.format(epoch_loss, epoch_acc.item()))
+
     print('validation loss: {:.4f}, validation acc {:.4f} '.format(val_epoch_loss, val_epoch_acc.item()))
+
+<img src="./img/step4-1.jpg" height=500/>
+
+plt.plot(running_loss_history, label='training loss')
+
+plt.plot(val_running_loss_history, label='validation loss')
+
+plt.legend()
+
+<img src="./img/step4-1.jpg" height=300/>
+
+## Step 5 Testing
+### No Mask Example
+<img src="https://img.ltn.com.tw/Upload/style/bphoto/normal/2019/12/11/20191211-84073-7.JPG" alt="no mask" width="300"/>
+
+
+### Mask Example
+<img src="https://img.ltn.com.tw/Upload/ent/page/800/2022/03/18/24.jpg" alt="mask" width="300"/>
+
+
+!pip3 install pillow==4.0.0
+
+<img src="./img/step5-1.jpg" height=500/>
+
+### No Mask Example
+
+import PIL.ImageOps
+
+import requests
+
+from PIL import Image
+
+url='https://img.ltn.com.tw/Upload/style/bphoto/normal/2019/12/11/20191211-84073-7.JPG'
+
+response = requests.get(url, stream = True)
+
+img = Image.open(response.raw)
+
+plt.imshow(img)
+
+<img src="./img/step5-2.jpg" height=300/>
+
+img = transform(img) 
+
+plt.imshow(im_convert(img))
+
+#Transform
+<img src="./img/step5-3.jpg" height=300/>
+
+image = img.to(device).unsqueeze(0)
+
+output = model(image)
+
+_, pred = torch.max(output, 1)
+
+print(classes[pred.item()])
+
+#Result
+<img src="./img/step5-4.jpg" height=200/>
+
+### Mask Example
+
+<img src="./img/step5-5.jpg" height=400/>
+
+
+#Transform
+<img src="./img/step5-6.jpg" height=400/>
+
+#Result
+<img src="./img/step5-7.jpg" height=300/>
