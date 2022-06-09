@@ -34,7 +34,7 @@ print(device)
 # !rm -rf ./ants_and_bees/
 !git clone https://github.com/ariefrahmansyah/face-mask-detection.git
 
-<img src="./img/step1-3.jpg" height=100/>
+<img src="./img/step1-3.jpg" height=10/>
 
 
 
