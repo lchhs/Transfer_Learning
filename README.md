@@ -36,5 +36,68 @@ print(device)
 
 <img src="./img/step1-3.jpg" height=400/>
 
+!ls ./face-mask-detection/data/
+
+<img src="./img/step1-4.jpg" height=300/>
+
+# Step 2: Pre-process X, Y
+* format transform (轉換成numpy format)
+* missing data (imputation)差補
+* category data transform 
+* data augmentation
+* normalization
+
+transform_train = transforms.Compose([
+          transforms.Resize((224,224)),
+          transforms.RandomHorizontalFlip(),
+          transforms.RandomAffine(0, shear=10, scale=(0.8,1.2)),
+          transforms.ColorJitter(brightness=1, contrast=1, saturation=1),
+          transforms.ToTensor(),
+          transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+          ])
+
+
+transform = transforms.Compose([transforms.Resize((224,224)),
+transforms.ToTensor(),
+transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+])
+
+training_dataset = datasets.ImageFolder('face-mask-detection/data/', transform=transform)
+validation_dataset = datasets.ImageFolder('face-mask-detection/data/', transform=transform)
+
+training_loader = torch.utils.data.DataLoader(training_dataset, batch_size=20, shuffle=True)
+validation_loader = torch.utils.data.DataLoader(validation_dataset, batch_size = 20, shuffle=False)
+
+print(len(training_dataset))
+print(len(validation_dataset))
+
+<img src="./img/step2-1.jpg" height=100/>
+
+def im_convert(tensor):
+  image = tensor.cpu().clone().detach().numpy()
+  image = image.transpose(1, 2, 0)
+  image = image * np.array((0.5, 0.5, 0.5)) + np.array((0.5, 0.5, 0.5))
+  image = image.clip(0, 1)
+  return image
+
+# !ls ./Face-Mask-Detection/dataset/
+
+classes=('with_mask','without_mask')
+
+dataiter = iter(training_loader)
+images,labels = dataiter.next()
+fig = plt.figure(figsize=(25, 4))
+
+for idx in np.arange(20):
+  ax = fig.add_subplot(2, 10, idx+1, xticks=[], yticks=[])
+  plt.imshow(im_convert(images[idx]))
+  ax.set_title(classes[labels[idx].item()])
+
+<img src="./img/step2-1.jpg" height=200/>
+
+# Step 3: Build Model for training
+
+<img src="https://ithelp.ithome.com.tw/upload/images/20171206/20001976yeCo1PvEOs.jpg"  height=300/>
+
 
 
