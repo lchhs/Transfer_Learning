@@ -93,11 +93,11 @@ for idx in np.arange(20):
   plt.imshow(im_convert(images[idx]))
   ax.set_title(classes[labels[idx].item()])
 
-<img src="./img/step2-1.jpg" height=200/>
+<img src="./img/step2-2.jpg" height=200/>
 
 # Step 3: Build Model for training
 
-<img src="https://ithelp.ithome.com.tw/upload/images/20171206/20001976yeCo1PvEOs.jpg"  height=300/>
+<img src="https://d1dwq032kyr03c.cloudfront.net/upload/images/20171206/20001976yeCo1PvEOs.jpg"  height=300/>
 
 
 
